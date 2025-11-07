@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #0b0f12;
+}
+
+html{scroll-behavior:smooth}
+
+.btn{@apply inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold transition-all}
+.btn-primary{@apply bg-brand text-black hover:bg-brand-dark}
+.glass{background:rgba(255,255,255,0.03);backdrop-filter: blur(6px)}
+
+/* Light theme overrides */
+html.light body{--bg:#ffffff}
+
+body{background:var(--bg)}
