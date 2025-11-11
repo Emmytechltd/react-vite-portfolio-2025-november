@@ -8,7 +8,7 @@ export default function Projects(){
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map(p => (
           <div key={p.id} className="rounded-xl overflow-hidden bg-gray-800 shadow-lg">
-            <div className="h-40 bg-gray-700 flex items-center justify-center text-gray-400">Screenshot</div>
+            <div className="h-40 bg-gray-700 flex items-center justify-center text-gray-400">Loading....</div>
             <div className="p-4">
               <h3 className="font-semibold">{p.name}</h3>
               <p className="text-sm text-gray-300 mt-2">{p.desc}</p>

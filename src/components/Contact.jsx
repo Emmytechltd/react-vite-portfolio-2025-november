@@ -35,13 +35,13 @@ export default function Contact(){
 
         <div className="p-4 rounded-lg glass">
           <h3 className="font-semibold">Business Contact</h3>
-          <p className="text-sm text-gray-300 mt-2">Phone: +234 800 000 0000</p>
-          <p className="text-sm text-gray-300">Email: hello@emmytech.com</p>
-          <p className="text-sm text-gray-300 mt-2">Address: Lagos, Nigeria</p>
+          <p className="text-sm text-gray-300 mt-2">Phone: +234 7067797360</p>
+          <p className="text-sm text-gray-300">Email: emmybasil@gmail.com</p>
+          <p className="text-sm text-gray-300 mt-2">Address: Lagos, Lekki Nigeria</p>
           <div className="mt-4 flex gap-3 text-2xl">
-            <a href="#" aria-label="LinkedIn">LI</a>
-            <a href="#" aria-label="GitHub">GH</a>
-            <a href="#" aria-label="Twitter">TW</a>
+            <a href="https://www.linkedin.com/in/onu-emmanuel-73a83613b/" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://github.com/Emmytechltd" aria-label="GitHub">GitHub</a>
+            <a href="https://x.com/emmxdon" aria-label="Twitter">X</a>
           </div>
         </div>
       </div>

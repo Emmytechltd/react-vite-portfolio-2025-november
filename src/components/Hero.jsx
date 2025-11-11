@@ -7,7 +7,7 @@ export default function Hero(){
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <motion.div initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{duration:0.6}}>
           <h1 className="text-4xl md:text-5xl font-extrabold">Hi, I'm Emmytech</h1>
-          <p className="mt-4 text-lg text-gray-300">Web Developer • UI/UX Enthusiast • Tech Innovator</p>
+          <p className="mt-4 text-lg text-gray-300">Web Developer • UI/UX/ Techprenuer • Tech Innovator</p>
           <div className="mt-6 flex gap-4">
             <a href="#projects" className="btn btn-primary">View Projects</a>
             <a href="#contact" className="btn border border-gray-700">Contact Me</a>

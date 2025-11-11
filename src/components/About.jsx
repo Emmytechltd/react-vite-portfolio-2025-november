@@ -11,7 +11,7 @@ export default function About(){
 
         <div className="md:col-span-2">
           <h2 className="text-3xl font-bold">About Me</h2>
-          <p className="mt-4 text-gray-300">I’m a Lagos-based developer with {new Date().getFullYear() - 2018}+ years of experience building responsive, accessible, and performance-focused web applications. I enjoy turning designs into polished user experiences and solving hard problems with simple solutions.</p>
+          <p className="mt-4 text-gray-300">I’m Onu Emeka, a  developer with {new Date().getFullYear() - 2018}+ years of experience building responsive, accessible, and performance-focused web applications. I enjoy turning designs into polished user experiences and solving hard problems with simple solutions.</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a href="/resume.pdf" className="btn btn-primary"><FiDownload/> Download CV</a>
