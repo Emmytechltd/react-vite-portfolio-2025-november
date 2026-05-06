@@ -79,7 +79,12 @@ export const portfolioData = {
     { name: "Vite", category: "Tools", iconName: "SiVite" },
   ] as TechItem[],
   contact: {
-    email: "hello@emmytech.com",
-    whatsapp: "+1234567890",
+    email: "emmytechdigitalsolutions@gmail.com",
+    whatsapp: "+2347067797360",
+    socials: {
+      github: "https://github.com/Emmytechltd",
+      linkedin: "https://www.linkedin.com/in/onu-emmanuel-73a83613b",
+      twitter: "https://x.com/emmxdon"
+    }
   }
 };

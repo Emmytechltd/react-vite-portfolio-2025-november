@@ -1,4 +1,5 @@
 import React from 'react';
+import { portfolioData } from '../../data/portfolioData';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,14 +22,14 @@ export const Footer: React.FC = () => {
           </p>
 
           <div className="flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href={portfolioData.contact.socials.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
               GitHub
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href={portfolioData.contact.socials.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
               LinkedIn
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              Twitter
+            <a href={portfolioData.contact.socials.twitter} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              X (Twitter)
             </a>
           </div>
         </div>
