@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiMessageCircle, FiSend } from 'react-icons/fi';
+import { FiMail, FiMessageCircle, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import { SectionHeading } from '../ui/SectionHeading';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
@@ -8,12 +8,39 @@ import { portfolioData } from '../../data/portfolioData';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    alert('Form submitted! (Simulation)');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -59,7 +86,7 @@ export const Contact: React.FC = () => {
                 rel="noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl glass hover:bg-white/10 transition-colors group"
               >
-                <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors">
+                <div className="w-12 h-12 rounded-full bg-secondary-500/20 text-secondary-400 flex items-center justify-center group-hover:bg-secondary-500 group-hover:text-white transition-colors">
                   <FiMessageCircle size={24} />
                 </div>
                 <div>
@@ -88,6 +115,7 @@ export const Contact: React.FC = () => {
                     className="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="John Doe"
                     required
+                    disabled={status === 'loading'}
                   />
                 </div>
                 <div>
@@ -100,6 +128,7 @@ export const Contact: React.FC = () => {
                     className="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="john@example.com"
                     required
+                    disabled={status === 'loading'}
                   />
                 </div>
                 <div>
@@ -112,11 +141,27 @@ export const Contact: React.FC = () => {
                     className="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
                     placeholder="How can I help you?"
                     required
+                    disabled={status === 'loading'}
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full group">
-                  Send Message
-                  <FiSend className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                
+                {status === 'success' && (
+                  <div className="flex items-center gap-2 text-green-400 bg-green-400/10 p-3 rounded-lg border border-green-400/20">
+                    <FiCheckCircle size={20} />
+                    <span>Message sent successfully! I'll get back to you soon.</span>
+                  </div>
+                )}
+                
+                {status === 'error' && (
+                  <div className="flex items-center gap-2 text-red-400 bg-red-400/10 p-3 rounded-lg border border-red-400/20">
+                    <FiAlertCircle size={20} />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
+                <Button type="submit" className="w-full group" disabled={status === 'loading'}>
+                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  {status !== 'loading' && <FiSend className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                 </Button>
               </form>
             </Card>

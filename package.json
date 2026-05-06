@@ -12,12 +12,14 @@
   "dependencies": {
     "emailjs-com": "^3.2.0",
     "framer-motion": "^10.12.6",
+    "nodemailer": "^8.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.18.0"
   },
   "devDependencies": {
+    "@types/nodemailer": "^8.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.0",
