@@ -2,17 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --bg: #0b0f12;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-white antialiased;
+    overflow-x: hidden;
+  }
 }
 
-html{scroll-behavior:smooth}
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-surface/40 backdrop-blur-md border border-white/10 transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply border-white/20 shadow-[0_0_15px_rgba(99,102,241,0.15)];
+  }
 
-.btn{@apply inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold transition-all}
-.btn-primary{@apply bg-brand text-black hover:bg-brand-dark}
-.glass{background:rgba(255,255,255,0.03);backdrop-filter: blur(6px)}
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500;
+  }
+}
 
-/* Light theme overrides */
-html.light body{--bg:#ffffff}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-body{background:var(--bg)}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
